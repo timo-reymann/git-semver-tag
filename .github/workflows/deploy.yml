@@ -14,7 +14,6 @@ jobs:
         uses: sosedoff/actions/golang-build@master
         with:
           args: linux/amd64 darwin/amd64 windows/amd64
-        needs: Checkout
 
       - name: Deploy artifact
         uses: JasonEtco/upload-to-release@master
@@ -22,4 +21,3 @@ jobs:
           args: .release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        needs: Build
