@@ -1,0 +1,25 @@
+#on:
+#  push:
+#    branches:
+#      - refs/tags/*
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build
+        uses: sosedoff/actions/golang-build@master
+        with:
+          args: linux/amd64 darwin/amd64 windows/amd64
+        needs: Checkout
+
+      - name: Deploy artifact
+        uses: JasonEtco/upload-to-release@master
+        with:
+          args: .release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        needs: Build
