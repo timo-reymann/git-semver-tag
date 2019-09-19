@@ -19,8 +19,8 @@ jobs:
         uses: actions/bin/sh@master
         with:
           args: >
-              cd .release &&
-              mv git-semver-tag_windows_amd64 git-semver-tag_windows_amd64.exe
+              "cd .release &&
+              mv git-semver-tag_windows_amd64 git-semver-tag_windows_amd64.exe"
 
       - name: Release
         uses: softprops/action-gh-release@v1
