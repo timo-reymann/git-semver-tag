@@ -3,6 +3,9 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
       - name: Build project
         uses: sosedoff/actions/golang-build@master
         with:
