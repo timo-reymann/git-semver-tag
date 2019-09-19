@@ -15,7 +15,7 @@ jobs:
         with:
           args: linux/amd64 darwin/amd64 windows/amd64
 
-      - name: Deploy artifact
+      - name: Deploy artifact for linux
         uses: JasonEtco/upload-to-release@master
         with:
           args: .release/git-semver-tag_linux_amd64
