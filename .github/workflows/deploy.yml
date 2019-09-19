@@ -1,7 +1,7 @@
 on:
  push:
     tags:
-      - refs/tags/*
+      - '*'
 
 jobs:
   build:
