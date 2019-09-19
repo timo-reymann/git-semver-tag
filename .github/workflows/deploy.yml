@@ -1,0 +1,33 @@
+on:
+ push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build
+        uses: sosedoff/actions/golang-build@master
+        with:
+          args: linux/amd64 darwin/amd64 windows/amd64
+
+      - name: Rename build artifact for windows
+        uses: actions/bin/sh@master
+        with:
+          args: >
+              "cd .release &&
+              mv git-semver-tag_windows_amd64 git-semver-tag_windows_amd64.exe"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            .release/git-semver-tag_linux_amd64
+            .release/git-semver-tag_windows_amd64.exe
+            .release/git-semver-tag_darwin_amd64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
