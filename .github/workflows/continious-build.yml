@@ -1,0 +1,8 @@
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Build project
+        uses: sosedoff/actions/golang-build@master
+        args: linux/amd64 darwin/amd64 windows/amd64
