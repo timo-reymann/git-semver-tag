@@ -1,7 +1,13 @@
-semver-git-tag
+git-semver-tag
 ===
 
-Simple helper to release your git tag according to the semver spec
+Simple helper to release your git tag according to the semver spec.
+
+## Features
+- create git tags easily following semver guidelines
+- prefix-aware, will keep your prefix without any further doings
+- feels like a direct integration with git
+- ability to add custom suffix to your version tag without having to do it all manually
 
 ## Installation
 ### using go ...
@@ -31,6 +37,6 @@ sudo mv git-semver-tag_darwin_amd64 /usr/local/bin/git-semver-tag
 ## Usage
 To get usage info enter:
 
-`git semver-tag --help`
+`git semver-tag -h`
 
 As you may have recognized now semver-tag is registered as subdomain.
