@@ -1,8 +1,8 @@
-#on:
-#  push:
-#    branches:
-#      - refs/tags/*
-on: push
+on:
+ push:
+    branches:
+      - refs/tags/*
+
 jobs:
   build:
     runs-on: ubuntu-18.04
