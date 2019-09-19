@@ -15,9 +15,12 @@ jobs:
         with:
           args: linux/amd64 darwin/amd64 windows/amd64
 
-      - name: Deploy artifact for linux
-        uses: JasonEtco/upload-to-release@master
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          args: .release/git-semver-tag_linux_amd64
+          files: |
+            .release/git-semver-tag_linux_amd64
+            .release/git-semver-tag_windows_amd64
+            .release/git-semver-tag_darwin_amd64
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
