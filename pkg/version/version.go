@@ -4,15 +4,15 @@ import "fmt"
 
 // Version is the structure for parsed version numbers
 type Version struct {
-    // Prefix for the version number, can be empty
+	// Prefix for the version number, can be empty
 	Prefix string
-    // Major version part - first place
-	Major  int
-    // Minor version part - second place
-	Minor  int
-    // Patch version part - third place
-	Patch  int
-    // Suffix, can be empty
+	// Major version part - first place
+	Major int
+	// Minor version part - second place
+	Minor int
+	// Patch version part - third place
+	Patch int
+	// Suffix, can be empty
 	Suffix string
 }
 
