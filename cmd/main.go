@@ -6,6 +6,7 @@ import (
 	"github.com/timo-reymann/git-semver-tag/pkg/version"
 )
 
+// Execute the command line
 func Execute() {
 	cmd := cli.SemverGitTagCliStd{}
 

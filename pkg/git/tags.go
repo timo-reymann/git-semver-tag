@@ -13,7 +13,7 @@ func GetTags() (tags []string, err error) {
 	return strings.Split(strings.TrimSpace(stdout), "\n"), nil
 }
 
-// Create Tag creates a new tag
+// CreateTag creates a new tag
 func CreateTag(tag string, message *string) (err error) {
 	args := []string{
 		"tag",

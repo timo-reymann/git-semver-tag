@@ -44,7 +44,7 @@ func (cli *SemverGitTagCliStd) ParseArgs() {
 	cli.verifyArgIsPresent("Level", cli.args.Level)
 }
 
-// Get args
+// Args returns a ref to the cli's current arguments
 func (cli *SemverGitTagCliStd) Args() *SemverGitTagCliArgs {
 	return cli.args
 }
