@@ -1,6 +1,6 @@
 git-semver-tag
 ===
-[![](https://img.shields.io/github/v/release/timo-reymann/git-semver-tag.svg)]
+![GitHub Release](https://img.shields.io/github/v/release/timo-reymann/git-semver-tag.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/timo-reymann/git-semver-tag)](https://goreportcard.com/report/github.com/timo-reymann/git-semver-tag)
 ![GitHub Release status](https://github.com/timo-reymann/git-semver-tag/workflows/GitHub%20Release/badge.svg)
 ![Continious Build status](https://github.com/timo-reymann/git-semver-tag/workflows/Build%20Project/badge.svg)
