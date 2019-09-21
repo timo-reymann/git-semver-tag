@@ -43,4 +43,4 @@ To get usage info enter:
 
 `git semver-tag -h`
 
-As you may have recognized now semver-tag is registered as subdomain.
+As you may have recognized now semver-tag is registered as git subcommand. 
