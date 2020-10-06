@@ -18,7 +18,7 @@ jobs:
           args: linux/amd64 darwin/amd64 windows/amd64
 
       - name: Rename build artifact for windows
-        uses: actions/bin/sh@master
+        uses: jdickey/bash@master
         with:
           args: >
               "cd .release &&
