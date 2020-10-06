@@ -21,7 +21,8 @@ jobs:
         uses: jdickey/bash@master
         with:
           args: >
-              "cd .release &&
+              "cd /github/workspace/.release &&
+              ls -la && 
               mv git-semver-tag_windows_amd64 git-semver-tag_windows_amd64.exe"
 
       - name: Release
