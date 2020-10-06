@@ -1,4 +1,4 @@
-name: Continious Build
+name: Continous Build
 on: [push, pull_request]
 
 jobs:
