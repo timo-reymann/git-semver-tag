@@ -29,13 +29,6 @@ curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl
 sudo mv git-semver-tag_darwin_amd64 /usr/local/bin/git-semver-tag
 ```
 
-### using Windows ...
-1. Download the latest binary from the [release page](https://github.com/timo-reymann/git-semver-tag/releases)
-2. Add the location of the binary to your PATH
-3. You are ready to go!
-
-**ATTENTION: Windows support is available, but no support for windows or any guarantee is given!**
-
 ## Usage
 To get usage info enter:
 
