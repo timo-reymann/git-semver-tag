@@ -19,15 +19,13 @@ Simple helper to release your git tag according to the semver spec.
 
 ### using Linux ...
 ```bash
-curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_linux_amd64
-chmod +x git-semver-tag_linux_amd64
+curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_linux_amd64 && chmod +x git-semver-tag_linux_amd64
 sudo mv git-semver-tag_linux_amd64 /usr/local/bin/git-semver-tag
 ```
 
 ### using Mac ...
 ```bash
-curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_linux_amd64
-chmod +x git-semver-tag_darwin_amd64
+curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_darwin_amd64 && chmod +x git-semver-tag_darwin_amd64
 sudo mv git-semver-tag_darwin_amd64 /usr/local/bin/git-semver-tag
 ```
 
