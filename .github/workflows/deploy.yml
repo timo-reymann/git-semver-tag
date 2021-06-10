@@ -63,7 +63,6 @@ jobs:
           ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $CHECKSUM
           git add .
           git commit -m "chore: Update formula for version ${{ env.GITHUB_TAG }}"
-          git push
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
