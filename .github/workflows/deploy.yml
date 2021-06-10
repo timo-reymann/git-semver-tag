@@ -54,7 +54,9 @@ jobs:
       - name: Run template call
         run: |
           ls
-          ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $(sha256sum git-semver-tag_darwin_amd64)
+          CHECKSUM="$(sha256sum git-semver-tag_darwin_amd64)"
+          echo "$CHECKSUM"
+          ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $CHECKSUM
           git add .
           git commit -m "chore: Update formula for version ${{ env.GITHUB_TAG }}"
           git push
