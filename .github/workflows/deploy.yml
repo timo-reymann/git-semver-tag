@@ -51,6 +51,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: Prepare git
+        run: |
+            git config --global user.name "Github Actions"
+            git config --global user.email no-reply@github.com
       - name: Run template call
         run: |
           ls
