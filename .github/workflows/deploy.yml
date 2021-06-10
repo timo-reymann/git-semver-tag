@@ -43,6 +43,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: timo-reymann/homebrew-git-semver-tag
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Download binaries
         uses: actions/download-artifact@v2
         with:
@@ -55,7 +56,7 @@ jobs:
         run: |
             git config --global user.name "Github Actions"
             git config --global user.email no-reply@github.com
-      - name: Run template call
+      - name: Run template call and push
         run: |
           ls
           CHECKSUM=$(sha256sum git-semver-tag_darwin_amd64 | cut -d " " -f 1)
@@ -63,9 +64,4 @@ jobs:
           ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $CHECKSUM
           git add .
           git commit -m "chore: Update formula for version ${{ env.GITHUB_TAG }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: timo-reymann/homebrew-git-semver-tag
-          branch: master
+          git push
