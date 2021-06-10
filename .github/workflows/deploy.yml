@@ -54,8 +54,9 @@ jobs:
           python-version: 3.8
       - name: Prepare git
         run: |
-            git config --global user.name "Github Actions"
-            git config --global user.email no-reply@github.com
+            git config url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
+            git config user.name "Github Actions"
+            git config user.email no-reply@github.com
       - name: Run template call and push
         run: |
           ls
