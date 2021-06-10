@@ -40,7 +40,7 @@ jobs:
         run: |
           echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
         with:
           repository: timo-reymann/homebrew-git-semver-tag
           token: ${{ secrets.GITHUB_TOKEN }}
