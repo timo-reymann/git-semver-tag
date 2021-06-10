@@ -12,6 +12,7 @@ type SemverGitTagCliArgs struct {
 	Level   *string
 	Suffix  *string
 	Message *string
+	Push    *bool
 }
 
 // SemverGitTagCli is the interface for a semver git tag cli implementation
@@ -39,6 +40,7 @@ func (cli *SemverGitTagCliStd) ParseArgs() {
 		Level:   flag.String("level", "", "major|minor|patch|suffix-only - Version to increase"),
 		Suffix:  flag.String("suffix", "", "Suffix to append to the version (optional)"),
 		Message: flag.String("message", "", "Message for tag (optional)"),
+		Push:    flag.Bool("push", false, "Push git tag (if origin is set)"),
 	}
 	flag.Parse()
 	cli.verifyArgIsPresent("Level", cli.args.Level)

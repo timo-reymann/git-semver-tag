@@ -8,28 +8,35 @@ git-semver-tag
 Simple helper to release your git tag according to the semver spec.
 
 ## Features
+
 - create git tags easily following semver guidelines
 - prefix-aware, will keep your prefix without any further doings
 - feels like a direct integration with git
 - ability to add custom suffix to your version tag without having to do it all manually
+- push the newly created tag to origin
 
 ## Installation
+
 ### using go ...
+
 ``go get -u github.com/timo-reymann/git-semver-tag``
 
-### using Linux ...
+### on Linux ...
+
 ```bash
 curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_linux_amd64 && chmod +x git-semver-tag_linux_amd64
 sudo mv git-semver-tag_linux_amd64 /usr/local/bin/git-semver-tag
 ```
 
-### using Mac ...
+### on Mac ...
+
 ```bash
 curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl -Lso /dev/null -w %{url_effective} https://github.com/timo-reymann/git-semver-tag/releases/latest | grep -o '[^/]*$')/git-semver-tag_darwin_amd64 && chmod +x git-semver-tag_darwin_amd64
 sudo mv git-semver-tag_darwin_amd64 /usr/local/bin/git-semver-tag
 ```
 
 ## Usage
+
 To get usage info enter:
 
 `git semver-tag -h`

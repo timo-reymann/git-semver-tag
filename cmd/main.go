@@ -57,10 +57,20 @@ func Execute() {
 		cmd.HandleError("Unsupported level")
 	}
 
-	print(currentTag.String())
+	println(currentTag.String())
 
 	if err := git.CreateTag(currentTag.String(), cmd.Args().Message); err != nil {
 		cmd.HandleError("Error creating tag: " + err.Error())
+	}
+
+	push := cmd.Args().Push
+	if push != nil && *push {
+		stdout, err := git.PushTag(currentTag.String())
+		println(stdout)
+		if err != nil {
+			cmd.HandleError("Failed to tag: " + err.Error())
+		}
+
 	}
 
 }

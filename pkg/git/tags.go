@@ -28,3 +28,8 @@ func CreateTag(tag string, message *string) (err error) {
 	_, err = ExecGitCommand(args...)
 	return err
 }
+
+// PushTag pushes the specified tag to the origin 'origin' that might fail if the origin is not defined.
+func PushTag(tag string) (stdout string, err error) {
+	return ExecGitCommand("push", "origin", "refs/tags/"+tag)
+}
