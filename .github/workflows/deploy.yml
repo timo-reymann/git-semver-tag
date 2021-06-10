@@ -32,6 +32,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   homebrew-release:
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Setup environment variables
