@@ -1,7 +1,7 @@
 name: GitHub Release
 
 on:
- push:
+  push:
     tags:
       - '*'
 
@@ -16,7 +16,12 @@ jobs:
         uses: sosedoff/actions/golang-build@master
         with:
           args: linux/amd64 darwin/amd64
-
+      - name: Store artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: |
+            .release/
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
@@ -26,3 +31,32 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+  homebrew-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup environment variables
+        run: |
+          echo "GITHUB_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          repository: timo-reymann/homebrew-git-semver-tag
+      - name: Download binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Run template call
+        run: |
+          ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $(sha256sum .release/git-semver-tag_darwin_amd64)
+          git add .
+          git commit -m "chore: Update formula for version ${{ env.GITHUB_TAG }}"
+          git push
+      - name: Push changes
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          repository: timo-reymann/homebrew-git-semver-tag
+          branch: master
