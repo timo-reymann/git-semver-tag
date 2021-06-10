@@ -54,7 +54,7 @@ jobs:
       - name: Run template call
         run: |
           ls
-          CHECKSUM="$(sha256sum git-semver-tag_darwin_amd64)"
+          CHECKSUM=$(sha256sum git-semver-tag_darwin_amd64 | cut -d " " -f 1)
           echo "$CHECKSUM"
           ./generate.py --version ${{ env.GITHUB_TAG }} --sha256-mac $CHECKSUM
           git add .
