@@ -4,6 +4,7 @@ git-semver-tag
 [![Go Report Card](https://goreportcard.com/badge/github.com/timo-reymann/git-semver-tag)](https://goreportcard.com/report/github.com/timo-reymann/git-semver-tag)
 ![GitHub Release status](https://github.com/timo-reymann/git-semver-tag/workflows/GitHub%20Release/badge.svg)
 ![Continuous Build status](https://github.com/timo-reymann/git-semver-tag/workflows/Continous%20Build/badge.svg)
+[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 
 Simple helper to release your git tag according to the semver spec.
 
