@@ -9,10 +9,11 @@ import (
 
 // SemverGitTagCliArgs represents the comand line arguments
 type SemverGitTagCliArgs struct {
-	Level   *string
-	Suffix  *string
-	Message *string
-	Push    *bool
+	Level       *string
+	Suffix      *string
+	Message     *string
+	Push        *bool
+	Interactive *bool
 }
 
 // SemverGitTagCli is the interface for a semver git tag cli implementation
@@ -29,7 +30,7 @@ type SemverGitTagCliStd struct {
 
 // HandleError prints the error messages and terminates the process
 func (cli *SemverGitTagCliStd) HandleError(msg string) {
-	_, _ = fmt.Fprintf(os.Stderr, "FATAL  %s", msg)
+	_, _ = fmt.Fprintf(os.Stderr, "Error:  %s\n", msg)
 	os.Exit(1)
 }
 
@@ -53,6 +54,8 @@ func (cli *SemverGitTagCliStd) Args() *SemverGitTagCliArgs {
 
 func (cli *SemverGitTagCliStd) verifyArgIsPresent(name string, val *string) {
 	if val == nil || strings.TrimSpace(*val) == "" {
-		cli.HandleError(fmt.Sprintf("Required parameter %s is not present", name))
+		flag.PrintDefaults()
+		println("")
+		cli.HandleError(fmt.Sprintf("Required parameter '%s' is not present", strings.ToLower(name)))
 	}
 }
