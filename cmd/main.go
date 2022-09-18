@@ -10,59 +10,45 @@ import (
 func Execute() {
 	cmd := cli.SemverGitTagCliStd{}
 
+	// Check if git is installed first
 	if !git.IsGitInstalled() {
 		cmd.HandleError("Git is not installed, but required")
 	}
 
-	cmd.ParseArgs()
-
+	// Try to get tags for current folder
 	tags, err := git.GetTags()
 	if err != nil {
 		cmd.HandleError("Failed to get tags: " + err.Error())
 	}
 
-	currentTag := version.Version{}
+	cmd.ParseArgs()
 
+	// Set current tag
+	currentTag := version.Version{}
 	if tags == nil || len(tags) == 0 {
-		currentTag = version.Version{
-			Prefix: "",
-			Major:  0,
-			Minor:  0,
-			Patch:  0,
-			Suffix: "",
-		}
+		currentTag = version.Empty()
 	} else {
 		currentTag = version.ProcessVersionTag(tags[len(tags)-1])
 	}
 
+	// Check suffix
 	suffix := cmd.Args().Suffix
 	if suffix != nil {
 		currentTag.Suffix = *suffix
 	}
 
-	switch *cmd.Args().Level {
-	case "major":
-		currentTag.NextMajor()
-
-	case "minor":
-		currentTag.NextMinor()
-
-	case "patch":
-		currentTag.NextPatch()
-
-	case "suffix-only":
-		// do nothing with version itself
-
-	default:
+	// Increment version and print it
+	if err := currentTag.IncrementBasedOnLevel(*cmd.Args().Level); err != nil {
 		cmd.HandleError("Unsupported level")
 	}
-
 	println(currentTag.String())
 
+	// Create new tag
 	if err := git.CreateTag(currentTag.String(), cmd.Args().Message); err != nil {
 		cmd.HandleError("Error creating tag: " + err.Error())
 	}
 
+	// Push tag
 	push := cmd.Args().Push
 	if push != nil && *push {
 		stdout, err := git.PushTag(currentTag.String())
@@ -70,7 +56,6 @@ func Execute() {
 		if err != nil {
 			cmd.HandleError("Failed to tag: " + err.Error())
 		}
-
 	}
 
 }

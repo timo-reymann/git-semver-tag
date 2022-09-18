@@ -1,6 +1,9 @@
 package version
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // Version is the structure for parsed version numbers
 type Version struct {
@@ -14,6 +17,17 @@ type Version struct {
 	Patch int
 	// Suffix, can be empty
 	Suffix string
+}
+
+// Empty returns a version containing no information
+func Empty() Version {
+	return Version{
+		Prefix: "",
+		Major:  0,
+		Minor:  0,
+		Patch:  0,
+		Suffix: "",
+	}
 }
 
 // NextMajor increases the major version and resets everything except the prefix
@@ -35,6 +49,35 @@ func (v *Version) NextMinor() {
 func (v *Version) NextPatch() {
 	v.Patch++
 	v.Suffix = ""
+}
+
+// IncrementBasedOnLevel takes a level and tries to increment based on that, if it fails due
+// the level not being known it returns an error
+func (v *Version) IncrementBasedOnLevel(level string) error {
+	failed := false
+
+	switch level {
+	case "major":
+		v.NextMajor()
+
+	case "minor":
+		v.NextMinor()
+
+	case "patch":
+		v.NextPatch()
+
+	case "suffix-only":
+		// do nothing with version itself
+
+	default:
+		failed = true
+	}
+
+	if failed {
+		return errors.New("invalid level")
+	}
+
+	return nil
 }
 
 func (v *Version) String() string {
