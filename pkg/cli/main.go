@@ -38,13 +38,17 @@ func (cli *SemverGitTagCliStd) HandleError(msg string) {
 // if a invalid parameter was passed HandleError is called
 func (cli *SemverGitTagCliStd) ParseArgs() {
 	cli.args = &SemverGitTagCliArgs{
-		Level:   flag.String("level", "", "major|minor|patch|suffix-only - Version to increase"),
-		Suffix:  flag.String("suffix", "", "Suffix to append to the version (optional)"),
-		Message: flag.String("message", "", "Message for tag (optional)"),
-		Push:    flag.Bool("push", false, "Push git tag (if origin is set)"),
+		Level:       flag.String("level", "", "major|minor|patch|suffix-only - Version to increase"),
+		Suffix:      flag.String("suffix", "", "Suffix to append to the version (optional)"),
+		Message:     flag.String("message", "", "Message for tag (optional)"),
+		Push:        flag.Bool("push", false, "Push git tag (if origin is set)"),
+		Interactive: flag.Bool("interactive", false, "Run interactive assistant, all other parameters are ignored when set."),
 	}
+
 	flag.Parse()
-	cli.verifyArgIsPresent("Level", cli.args.Level)
+	if cli.args.Interactive != nil && !*cli.args.Interactive {
+		cli.verifyArgIsPresent("Level", cli.args.Level)
+	}
 }
 
 // Args returns a ref to the cli's current arguments
