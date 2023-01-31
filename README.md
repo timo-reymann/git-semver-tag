@@ -20,7 +20,7 @@ Simple helper to release your git tag according to the semver spec.
 
 ### using go ...
 
-``go get -u github.com/timo-reymann/git-semver-tag``
+``go install github.com/timo-reymann/git-semver-tag@latest``
 
 ### on Linux ...
 
