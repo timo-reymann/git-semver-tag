@@ -1,5 +1,8 @@
 name: GitHub Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -29,7 +32,7 @@ jobs:
             .release/git-semver-tag_linux_amd64
             .release/git-semver-tag_darwin_amd64
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   homebrew-release:
     needs:
