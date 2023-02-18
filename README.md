@@ -1,6 +1,5 @@
 git-semver-tag
 ===
-[![LICENSE](https://img.shields.io/github/license/timo-reymann/git-semver-tag)](https://github.com/timo-reymann/git-semver-tag/blob/main/LICENSE)
 [![GitHub Release](https://img.shields.io/github/v/release/timo-reymann/git-semver-tag.svg?label=version)](https://github.com/timo-reymann/git-semver-tag/releases)
 [![Go Report Card](https://goreportcard.com/badge/github.com/timo-reymann/git-semver-tag)](https://goreportcard.com/report/github.com/timo-reymann/git-semver-tag)
 ![GitHub Release status](https://github.com/timo-reymann/git-semver-tag/workflows/GitHub%20Release/badge.svg)
@@ -25,7 +24,9 @@ git-semver-tag
 
 ### using go ...
 
-``go install github.com/timo-reymann/git-semver-tag@latest``
+```sh
+go install github.com/timo-reymann/git-semver-tag@latest
+```
 
 ### on Linux ...
 
@@ -45,7 +46,9 @@ sudo mv git-semver-tag_darwin_amd64 /usr/local/bin/git-semver-tag
 
 To get usage info enter:
 
-`git semver-tag -h`
+```sh
+git semver-tag -h
+```
 
 As you may have recognized now semver-tag is registered as git subcommand.
 
