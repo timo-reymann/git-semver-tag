@@ -35,6 +35,21 @@ curl -LO https://github.com/timo-reymann/git-semver-tag/releases/download/$(curl
 sudo mv git-semver-tag_linux_amd64 /usr/local/bin/git-semver-tag
 ```
 
+### on Mac with homebrew ...
+
+```bash
+brew install timo-reymann/homebrew-git-semver-tag/git-semver-tag 
+```
+
+Note: this creates a tap `timo-reymann/git-semver-tag`:
+
+```bash
+brew tap
+homebrew/bundle
+timo-reymann/git-semver-tag
+[...]
+```
+
 ### on Mac ...
 
 ```bash
